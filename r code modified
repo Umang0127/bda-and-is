@@ -1,0 +1,15 @@
+dataset = read.csv('../Desktop/iris.csv')
+X = dataset[1:4]
+
+
+
+wcss = vector()
+for (i in 1:10)
+wcss[i] = sum(kmeans(X, i)$withinss)
+plot(x = 1:10,y = wcss,type = 'b')
+
+
+
+kmeans = kmeans(x = X,centers = 3,iter.max = 300)
+library(cluster)
+clusplot(x = X,clus = kmeans$cluster)
